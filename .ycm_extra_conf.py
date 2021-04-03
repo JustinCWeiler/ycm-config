@@ -21,7 +21,6 @@ def Settings(**kwargs):
         dir_path = path.dirname(dir_path)
 
     # generate the flags from makefile output
-    flags = []
     if makefile_path:
         makefile_path = path.dirname(makefile_path)
         ps = subprocess.Popen(('make', '-B', '-n', '-C', makefile_path), stdout=subprocess.PIPE)
