@@ -4,6 +4,9 @@ import subprocess
 MAKEFILE_NAMES = ['makefile', 'Makefile']
 
 def Settings(**kwargs):
+    if kwargs['language'] != 'cfamily':
+        return {}
+
     # default flags
     flags = ['-Wall', '-Wextra', '-Werror']
 
