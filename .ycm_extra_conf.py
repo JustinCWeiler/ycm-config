@@ -1,5 +1,6 @@
 from os import path
 import subprocess
+import re
 
 MAKEFILE_NAMES = ['makefile', 'Makefile']
 
@@ -12,6 +13,13 @@ def Settings(**kwargs):
 
     # get important variables from filepath
     dir_path, filename = path.split(kwargs['filename'])
+
+    # change header filenames to source filenames
+    ind = re.search(r'\.', filename).span()[1]
+    base = filename[:ind]
+    ext = filename[ind:]
+    ext = ext.replace('h', 'c')
+    filename = base + ext
 
     # get makefile path by stepping up until root
     makefile_path = None
